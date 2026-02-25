@@ -15,7 +15,9 @@ createRoot(document.getElementById("root")!).render(
       authorizationParams={{
         redirect_uri: import.meta.env.VITE_AUTH0_REDIRECT_URI,
         audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+        scope: import.meta.env.VITE_AUTH0_SCOPE,
       }}
+      useRefreshTokens
       cacheLocation="localstorage"
     >
       <Provider store={store}>
