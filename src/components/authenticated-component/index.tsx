@@ -5,7 +5,10 @@ export const AuthenticatedComponent = ({ element }: { element: JSX.Element }) =>
   const { isLoading, isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
-    if (isLoading || isAuthenticated) return;
+    if (isLoading) return;
+
+    if (isAuthenticated) return;
+
     localStorage.setItem("returnTo", window.location.href);
     loginWithRedirect();
   }, [isLoading, isAuthenticated, loginWithRedirect]);

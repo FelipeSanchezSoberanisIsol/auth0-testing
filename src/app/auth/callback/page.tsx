@@ -7,13 +7,20 @@ export const AuthCallbackPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoading || !isAuthenticated) return;
+    if (isLoading) return;
+
+    if (!isAuthenticated) {
+      navigate("/");
+      return;
+    }
+
     const returnTo = localStorage.getItem("returnTo");
     localStorage.removeItem("returnTo");
     if (!returnTo) {
       navigate("/");
       return;
     }
+
     const url = new URL(returnTo);
     navigate({ pathname: url.pathname, search: url.search });
   }, [isLoading, isAuthenticated, navigate]);

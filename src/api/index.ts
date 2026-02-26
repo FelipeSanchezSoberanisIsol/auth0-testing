@@ -1,17 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Auth0Client } from "@auth0/auth0-spa-js";
-
-const auth0Client = new Auth0Client({
-  domain: import.meta.env.VITE_AUTH0_DOMAIN,
-  clientId: import.meta.env.VITE_AUTH0_CLIENT_ID,
-  authorizationParams: {
-    redirect_uri: import.meta.env.VITE_AUTH0_REDIRECT_URI,
-    audience: import.meta.env.VITE_AUTH0_AUDIENCE,
-    scope: import.meta.env.VITE_AUTH0_SCOPE,
-  },
-  useRefreshTokens: true,
-  cacheLocation: "localstorage",
-});
+import { auth0Client } from "@/auth0/auth0-client";
 
 export const api = createApi({
   reducerPath: "api",
